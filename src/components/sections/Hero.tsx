@@ -120,7 +120,7 @@ export default function Hero() {
                     <Card variant="glass" className="h-full p-6 flex flex-col group hover:border-primary/30 transition-colors" hoverEffect>
                         <div className="flex items-start justify-between mb-auto">
                             <div>
-                                <p className="text-3xl font-bold text-foreground drop-shadow-sm">1,200+</p>
+                                <p className="text-3xl font-bold text-foreground drop-shadow-sm">900+</p>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Commits this year</p>
                             </div>
                             <div className="size-10 rounded-full bg-primary/10 dark:bg-white/5 flex items-center justify-center border border-white/5 backdrop-blur-sm">
@@ -400,8 +400,12 @@ export default function Hero() {
                 </motion.div>
 
                 {/* 7. Contact */}
-                <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 lg:col-span-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 rounded-squircle glass-panel overflow-hidden shadow-lg">
+                <motion.div
+                    id="contact"
+                    variants={itemVariants}
+                    className="col-span-1 md:col-span-2 lg:col-span-3"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 rounded-squircle glass-panel overflow-hidden shadow-lg transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(43,124,238,0.15)] hover:-translate-y-1">
                         <div className="p-8 md:p-12 relative flex flex-col justify-between">
                             <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
                             <div>
@@ -435,26 +439,58 @@ export default function Hero() {
                         </div>
 
                         <div className="p-8 md:p-12 bg-black/40 backdrop-blur-md">
-                            <form className="flex flex-col gap-4">
-                                <div className="grid grid-cols-2 gap-4">
+                            <form
+                                className="flex flex-col gap-4"
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                    const formData = new FormData(e.currentTarget);
+                                    const subject = formData.get('subject') as string;
+                                    const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\n${formData.get('message')}`;
+                                    window.location.href = `mailto:hello@mishra.dev?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                                }}
+                            >
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1">
                                         <label className="text-xs text-gray-500 font-medium ml-1">Name</label>
-                                        <input className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white" placeholder="John Doe" type="text" />
+                                        <input
+                                            name="name"
+                                            className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white"
+                                            placeholder="John Doe"
+                                            type="text"
+                                            required
+                                        />
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <label className="text-xs text-gray-500 font-medium ml-1">Email</label>
-                                        <input className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white" placeholder="john@example.com" type="email" />
+                                        <input
+                                            name="email"
+                                            className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white"
+                                            placeholder="john@example.com"
+                                            type="email"
+                                            required
+                                        />
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <label className="text-xs text-gray-500 font-medium ml-1">Subject</label>
-                                    <input className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white" placeholder="Project Inquiry" type="text" />
+                                    <input
+                                        name="subject"
+                                        className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white"
+                                        placeholder="Project Inquiry"
+                                        type="text"
+                                    />
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <label className="text-xs text-gray-500 font-medium ml-1">Message</label>
-                                    <textarea className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white resize-none" placeholder="Tell me about your project..." rows={4}></textarea>
+                                    <textarea
+                                        name="message"
+                                        className="glass-input rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white resize-none"
+                                        placeholder="Tell me about your project..."
+                                        rows={4}
+                                        required
+                                    ></textarea>
                                 </div>
-                                <Button type="button" className="mt-2 w-full">Send Message</Button>
+                                <Button type="submit" className="mt-2 w-full">Send Message</Button>
                             </form>
                         </div>
                     </div>

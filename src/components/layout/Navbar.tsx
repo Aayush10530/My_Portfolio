@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -94,17 +95,54 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <a href="/contact">
+                    <Link href="#contact">
                         <Button variant="primary" size="lg" className="rounded-full px-6 shadow-[0_0_20px_rgba(43,124,238,0.4)] hover:shadow-[0_0_30px_rgba(43,124,238,0.6)]">
                             Contact Me
                         </Button>
-                    </a>
+                    </Link>
                 </div>
-                {/* Mobile Menu */}
+                {/* Mobile Menu Button */}
                 <div className="md:hidden text-white">
-                    <Menu className="size-6" />
+                    <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2">
+                        <Menu className="size-6" />
+                    </button>
                 </div>
             </div>
+
+            {/* Mobile Menu Dropdown */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 absolute w-full left-0 top-16 px-6 py-6 flex flex-col gap-6 shadow-2xl h-screen">
+                    {mainLinks.map((item) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={cn(
+                                "text-lg font-medium transition-colors",
+                                pathname === item.href ? "text-primary" : "text-gray-400 hover:text-white"
+                            )}
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
+                    <div className="flex gap-4 border-t border-white/10 pt-6">
+                        {socialLinks.map((item) => (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3 bg-white/5 rounded-full"
+                            >
+                                <img src={item.icon} alt={item.name} className="size-5 dark:invert opacity-70" />
+                            </Link>
+                        ))}
+                    </div>
+                    <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button variant="primary" size="lg" className="w-full justify-center">Contact Me</Button>
+                    </Link>
+                </div>
+            )}
         </nav>
     );
 }

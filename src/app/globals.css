@@ -73,6 +73,17 @@
     border-radius: 4px;
 }
 
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
+}
+
+/* Hide Next.js DevTools Indicator */
+[data-nextjs-toast],
+[data-nextjs-toast-wrapper] {
+    display: none !important;
+}
+
+.nextjs-toast-errors-parent {
+    display: none !important;
 }
