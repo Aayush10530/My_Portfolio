@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PlayCircle, Code, Terminal, Smartphone, Database, FileText } from "lucide-react";
+import { PlayCircle, Code, Terminal, Smartphone, Database, FileText, Cloud } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
