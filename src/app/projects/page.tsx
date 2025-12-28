@@ -11,7 +11,7 @@ export default function ProjectsPage() {
 
             {/* Footer */}
             <footer className="w-full py-8 text-center text-gray-600 text-sm border-t border-border-subtle bg-black/20 backdrop-blur-lg mt-12">
-                <p>© 2024 Senior Engineer Portfolio. Built with precision.</p>
+                <p>&copy; 2024 Aayush Mishra. Built with precision.</p>
             </footer>
         </main>
     );

@@ -11,8 +11,11 @@ const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-fira-code" })
 const notoSans = Noto_Sans({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-noto-sans" });
 
 export const metadata: Metadata = {
-  title: "Engineer Portfolio",
-  description: "Senior Engineer Portfolio - Architecting Scalable Systems",
+  title: "Aayush Mishra",
+  description: "Portfolio of Aayush Mishra - Architecting Scalable Systems",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
