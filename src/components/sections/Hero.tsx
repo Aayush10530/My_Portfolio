@@ -54,19 +54,19 @@ export default function Hero() {
 
                         <div className="relative z-10 flex flex-col gap-6 h-full justify-center">
                             <div>
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-primary mb-6 backdrop-blur-md shadow-sm">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 dark:bg-white/5 border border-primary/10 dark:border-white/10 text-xs font-medium text-primary mb-6 backdrop-blur-md shadow-sm">
                                     <span className="relative flex h-2 w-2">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                     </span>
                                     AI Generalist
                                 </div>
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-4">
+                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-4 text-foreground">
                                     Architecting <br />
-                                    <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Scalable Systems</span>
+                                    <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-gray-500 dark:from-white dark:to-white/50">Scalable Systems</span>
                                 </h1>
-                                <p className="text-lg text-gray-400 font-normal max-w-md leading-relaxed">
-                                    Full Stack Development | DevOps | Cloud <br />
+                                <p className="text-lg text-gray-600 dark:text-gray-400 font-normal max-w-md leading-relaxed">
+                                    Full Stack | DevOps | Cloud <br />
                                     Crafting robust digital infrastructure with precision and modern aesthetics.
                                 </p>
                             </div>
@@ -101,10 +101,10 @@ export default function Hero() {
                         <div className="absolute bottom-6 left-6 right-6 z-20">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">Based In</p>
+                                    <p className="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Based In</p>
                                     <div className="flex items-center gap-2">
                                         <MapPin className="text-primary size-5 drop-shadow-[0_0_8px_rgba(43,124,238,0.8)]" />
-                                        <span className="text-xl font-bold">India</span>
+                                        <span className="text-xl font-bold text-foreground">India</span>
                                     </div>
                                 </div>
                                 <div className="bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 backdrop-blur-md shadow-[0_0_10px_rgba(74,222,128,0.1)]">
@@ -120,11 +120,11 @@ export default function Hero() {
                     <Card variant="glass" className="h-full p-6 flex flex-col group hover:border-primary/30 transition-colors" hoverEffect>
                         <div className="flex items-start justify-between mb-auto">
                             <div>
-                                <p className="text-3xl font-bold text-white drop-shadow-sm">1,200+</p>
-                                <p className="text-sm text-gray-400">Commits this year</p>
+                                <p className="text-3xl font-bold text-foreground drop-shadow-sm">1,200+</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Commits this year</p>
                             </div>
-                            <div className="size-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 backdrop-blur-sm">
-                                <PieChart className="text-white/70 size-5" />
+                            <div className="size-10 rounded-full bg-primary/10 dark:bg-white/5 flex items-center justify-center border border-white/5 backdrop-blur-sm">
+                                <PieChart className="text-foreground/70 size-5" />
                             </div>
                         </div>
 
@@ -166,14 +166,14 @@ export default function Hero() {
                                 <div className="inline-block px-3 py-1 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold mb-3 backdrop-blur-sm">
                                     OpenSource Contributor
                                 </div>
-                                <h2 className="text-3xl font-bold mb-2">Aayush Mishra</h2>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                                <h2 className="text-3xl font-bold mb-2 text-foreground">Aayush Mishra</h2>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
                                     An AI-powered accessibility assistant that bridges the gap for non-digital natives. Features real-time voice navigation and simplified UI generation.
                                 </p>
                             </div>
                             <div className="flex gap-2 flex-wrap">
                                 {["React", "Node.js", "OpenAI API", "Tailwind"].map(tech => (
-                                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/5 rounded-md text-xs text-gray-300 font-mono backdrop-blur-sm">
+                                    <span key={tech} className="px-3 py-1 bg-primary/10 dark:bg-white/5 border border-white/5 rounded-md text-xs text-gray-700 dark:text-gray-300 font-mono backdrop-blur-sm">
                                         {tech}
                                     </span>
                                 ))}
@@ -181,8 +181,8 @@ export default function Hero() {
                         </div>
 
                         {/* Code visual */}
-                        <div className="flex-1 bg-black/40 backdrop-blur-md border-l border-border-subtle flex flex-col min-h-[250px] font-mono text-sm relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 origin-right">
-                            <div className="flex items-center px-4 py-3 border-b border-border-subtle bg-black/20">
+                        <div className="flex-1 bg-gray-50 dark:bg-black/40 backdrop-blur-md border-l border-border-subtle flex flex-col min-h-[250px] font-mono text-sm relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 origin-right">
+                            <div className="flex items-center px-4 py-3 border-b border-border-subtle bg-gray-200/50 dark:bg-black/20">
                                 <div className="flex gap-2">
                                     <div className="size-3 rounded-full bg-[#ff5f56]" />
                                     <div className="size-3 rounded-full bg-[#ffbd2e]" />
@@ -190,7 +190,7 @@ export default function Hero() {
                                 </div>
                                 <div className="ml-4 text-xs text-gray-500">aayush-mishra — index.ts</div>
                             </div>
-                            <div className="p-6 text-gray-300 overflow-hidden relative">
+                            <div className="p-6 text-gray-700 dark:text-gray-300 overflow-hidden relative">
                                 <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-[60px] pointer-events-none"></div>
                                 <div className="leading-relaxed relative z-10 text-xs md:text-sm">
                                     <p><span className="text-purple-400">import</span> {"{ "} <span className="text-yellow-300">OpenAI</span> {" }"} <span className="text-purple-400">from</span> <span className="text-green-300">'openai'</span>;</p>
@@ -212,7 +212,7 @@ export default function Hero() {
                 <motion.div variants={itemVariants} whileHover="hover" className="col-span-1 md:col-span-1 lg:col-span-1 z-20 group">
                     <Card variant="glass" className="h-full p-6 flex flex-col items-center justify-center relative min-h-[300px] !overflow-visible" hoverEffect>
                         <div className="absolute inset-0 bg-gradient-radial from-white/5 to-transparent opacity-50 pointer-events-none"></div>
-                        <h3 className="absolute top-6 left-6 text-lg font-bold text-white z-10">Tech Stack</h3>
+                        <h3 className="absolute top-6 left-6 text-lg font-bold text-foreground z-10">Tech Stack</h3>
 
                         {/* Rotating Container */}
                         <div className="relative w-64 h-64 mt-6">
@@ -241,24 +241,35 @@ export default function Hero() {
                                 {[
                                     { icon: "https://cdn.simpleicons.org/react/61DAFB", name: "React" },
                                     { icon: "https://cdn.simpleicons.org/nodedotjs/339933", name: "Node" },
-                                    { icon: "https://cdn.simpleicons.org/python/3776AB", name: "Python" },
+                                    { icon: "/icons/python.png", name: "Python" },
                                     { icon: "https://cdn.simpleicons.org/docker/2496ED", name: "Docker" },
                                     { icon: "https://cdn.simpleicons.org/nextdotjs/ffffff", name: "Next.js" },
                                     { icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4", name: "Tailwind" },
                                     { icon: "https://cdn.simpleicons.org/typescript/3178C6", name: "TS" },
                                     { icon: "https://cdn.simpleicons.org/git/F05032", name: "Git" },
+                                    { icon: "/icons/jenkins.png", name: "Jenkins" },
+                                    { icon: "/icons/aws.png", name: "AWS" },
+                                    { icon: "/icons/terraform.png", name: "Terraform" },
+                                    { icon: "/icons/java.png", name: "Java" },
                                 ].map((skill, i, arr) => {
                                     const angle = (i / arr.length) * 360;
                                     return (
                                         <div
                                             key={i}
-                                            className="absolute top-1/2 left-1/2 w-10 h-10 -ml-5 -mt-5 bg-black/80 rounded-full border border-white/10 flex items-center justify-center shadow-lg backdrop-blur-md"
+                                            className="absolute top-1/2 left-1/2 w-10 h-10 -ml-5 -mt-5 bg-white/80 dark:bg-black/80 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center shadow-lg backdrop-blur-md"
                                             style={{
                                                 transform: `rotate(${angle}deg) translate(110px) rotate(-${angle}deg)`, // Position them in circle
                                             }}
                                         >
                                             <div className="w-full h-full animate-[spin_12s_linear_infinite_reverse] [animation-play-state:paused] group-hover:[animation-play-state:running] flex items-center justify-center">
-                                                <img src={skill.icon} alt={skill.name} className="w-5 h-5 opacity-90" />
+                                                <img
+                                                    src={skill.icon}
+                                                    alt={skill.name}
+                                                    className={cn(
+                                                        "w-5 h-5 opacity-90",
+                                                        skill.name === "Next.js" && "invert dark:invert-0"
+                                                    )}
+                                                />
                                             </div>
                                         </div>
                                     );
@@ -310,10 +321,10 @@ export default function Hero() {
                                         animate="rest"
                                     >
                                         <div className="flex justify-between items-end">
-                                            <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">{skill.name}</span>
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-foreground dark:group-hover:text-white transition-colors duration-300">{skill.name}</span>
                                             <span className="text-xs font-mono text-primary group-hover:text-primary-foreground transition-colors duration-300">{skill.level}</span>
                                         </div>
-                                        <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                                        <div className="h-2 w-full bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden border border-gray-200 dark:border-white/5">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: skill.level }}
@@ -396,12 +407,12 @@ export default function Hero() {
                             <div>
                                 <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">Let's <span className="font-bold">Collaborate</span></h2>
                                 <p className="text-gray-400 leading-relaxed mb-8">
-                                    Interested in scaling your infrastructure or building a next-gen web application? Drop me a line.
+                                    Interested in scaling your infrastructure or building a next-gen application? Drop me a line.
                                 </p>
                                 <div className="space-y-4">
                                     {[
                                         { icon: Mail, text: "hello@mishra.dev" },
-                                        { icon: MapPin, text: "Bangalore, India" },
+                                        { icon: MapPin, text: "Remote, India" },
                                         { icon: Briefcase, text: "Open to Freelance" }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 text-gray-300 group">
