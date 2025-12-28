@@ -41,6 +41,12 @@ export default function RootLayout({
           <SmoothScroll />
           {/* Ambient Background - Interactive */}
           <AmbientBackground />
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            nextjs-portal {
+              display: none !important;
+            }
+          `}} />
           {children}
         </ThemeProvider>
       </body>

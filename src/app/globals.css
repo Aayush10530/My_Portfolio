@@ -80,7 +80,8 @@
 
 /* Hide Next.js DevTools Indicator */
 [data-nextjs-toast],
-[data-nextjs-toast-wrapper] {
+[data-nextjs-toast-wrapper],
+nextjs-portal {
     display: none !important;
 }
 
