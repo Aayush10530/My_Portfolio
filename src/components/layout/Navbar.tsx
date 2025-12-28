@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Terminal, Lightbulb, Menu, Download } from "lucide-react"; // Replaced material symbols with lucide-react
+import { Terminal, Lightbulb, Menu, Download } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,6 +18,14 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "Projects", href: "/projects" },
+        { name: "Experience", href: "/experience" },
+        { name: "GitHub", href: "https://github.com" }, // Ideally replace with actual link
+        { name: "LinkedIn", href: "https://linkedin.com" } // Ideally replace with actual link
+    ];
 
     return (
         <nav
@@ -28,22 +38,25 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <div className="flex items-center gap-3">
+                <Link href="/" className="flex items-center gap-3">
                     <div className="size-8 rounded-lg bg-white/10 flex items-center justify-center text-white backdrop-blur-md shadow-lg border border-white/10">
                         <Terminal className="size-5" />
                     </div>
                     <span className="font-bold text-lg tracking-tight">Mishra</span>
-                </div>
+                </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-6">
-                    {["Home", "Projects", "GitHub", "LinkedIn"].map((item) => (
+                    {navLinks.map((item) => (
                         <Link
-                            key={item}
-                            href="#"
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                            key={item.name}
+                            href={item.href}
+                            className={cn(
+                                "text-sm font-medium transition-colors",
+                                pathname === item.href ? "text-white" : "text-gray-300 hover:text-white"
+                            )}
                         >
-                            {item}
+                            {item.name}
                         </Link>
                     ))}
 

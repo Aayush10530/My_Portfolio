@@ -66,14 +66,16 @@ export default function Hero() {
                                 </p>
                             </div>
 
-                            <div className="flex gap-4 mt-4">
+                            <a href="/experience">
                                 <Button variant="secondary" size="lg" className="shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                                     View Resume <ArrowUpRight className="size-4 ml-1" />
                                 </Button>
+                            </a>
+                            <a href="/projects">
                                 <Button variant="glass" size="lg">
                                     <FolderOpen className="size-4 mr-2" /> My Work
                                 </Button>
-                            </div>
+                            </a>
                         </div>
                     </Card>
                 </motion.div>
@@ -126,9 +128,9 @@ export default function Hero() {
                                             key={col}
                                             className={cn(
                                                 "w-full rounded-sm",
-                                                Math.random() > 0.5 ? "bg-green-500 shadow-[0_0_4px_rgba(34,197,94,0.4)]" : "bg-white/5"
+                                                (row + col) % 2 === 0 ? "bg-green-500 shadow-[0_0_4px_rgba(34,197,94,0.4)]" : "bg-white/5"
                                             )}
-                                            style={{ opacity: Math.random() * 0.5 + 0.3 }}
+                                            style={{ opacity: (row * col * 0.1) % 1 || 0.5 }}
                                         />
                                     ))}
                                 </div>
