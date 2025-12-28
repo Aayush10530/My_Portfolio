@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { ArrowUpRight, FolderOpen, MapPin, Wifi, GitCommit, Database, Terminal, Cpu, Cloud, Code, Briefcase, Mail, Clock } from "lucide-react";
+import { useState } from "react";
+import { motion, Variants, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, FolderOpen, MapPin, Wifi, GitCommit, Database, Terminal, Cpu, Cloud, Code, Briefcase, Mail, Clock, PieChart } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
@@ -31,6 +32,10 @@ const itemVariants: Variants = {
 };
 
 export default function Hero() {
+    const { scrollY } = useScroll();
+    const parallaxY = useTransform(scrollY, [0, 500], [0, -50]);
+    const [isSkillsHovered, setIsSkillsHovered] = useState(false);
+
     return (
         <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24">
             <motion.div
@@ -54,7 +59,7 @@ export default function Hero() {
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                     </span>
-                                    Senior Engineer
+                                    AI Generalist
                                 </div>
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-4">
                                     Architecting <br />
@@ -66,30 +71,34 @@ export default function Hero() {
                                 </p>
                             </div>
 
-                            <a href="/experience">
-                                <Button variant="secondary" size="lg" className="shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                                    View Resume <ArrowUpRight className="size-4 ml-1" />
-                                </Button>
-                            </a>
-                            <a href="/projects">
-                                <Button variant="glass" size="lg">
-                                    <FolderOpen className="size-4 mr-2" /> My Work
-                                </Button>
-                            </a>
+                            <div className="flex flex-wrap gap-4 mt-2">
+                                <a href="/experience">
+                                    <Button variant="secondary" size="lg" className="shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                                        View Resume <ArrowUpRight className="size-4 ml-1" />
+                                    </Button>
+                                </a>
+                                <a href="/projects">
+                                    <Button variant="glass" size="lg">
+                                        <FolderOpen className="size-4 mr-2" /> My Work
+                                    </Button>
+                                </a>
+                            </div>
                         </div>
                     </Card>
                 </motion.div>
 
-                {/* 2. Map Card */}
                 <motion.div variants={itemVariants} className="col-span-1 md:col-span-1 row-span-1">
                     <Card variant="glass" className="h-full relative group overflow-hidden min-h-[200px]" hoverEffect>
-                        <div
-                            className="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 mix-blend-luminosity"
-                            style={{ backgroundImage: `url('https://placehold.co/600x400/1a1a1a/FFF?text=Map')` }}
-                        ></div>
+                        <motion.div
+                            className="absolute left-0 top-0 w-full h-[140%] bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 mix-blend-luminosity"
+                            style={{
+                                backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBG745TZHe7lZLfwf9qm1b1282SD4udlT7wiHMZ04BgZ0hjTODhQwMQL1ZGMw3JfxKrHC0zqgHsu5m6dIsqzGaqbTIBsvo77rCBblB3xJI1eAJ5W88Vf6r4klXg4XAXR8rZ0fU9Ydr1j1WomARX9NAWjIirH6LidPsClH7MnlPUGWd_zTjHOj-RhPeAgtM-5g1vYowUk7oVe1t-xzMQ05P8DFD3cCJ5t9wgxFXsQq-lwFKYofpcWbUz3oQ9heAXkqz4D0vUrTbnQrY')`,
+                                y: parallaxY
+                            }}
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
 
-                        <div className="absolute bottom-6 left-6 right-6">
+                        <div className="absolute bottom-6 left-6 right-6 z-20">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">Based In</p>
@@ -115,22 +124,27 @@ export default function Hero() {
                                 <p className="text-sm text-gray-400">Commits this year</p>
                             </div>
                             <div className="size-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 backdrop-blur-sm">
-                                <GitCommit className="text-white/70 size-5" />
+                                <PieChart className="text-white/70 size-5" />
                             </div>
                         </div>
 
-                        {/* Mock Github Graph */}
-                        <div className="flex flex-col gap-1 mt-4 opacity-50 group-hover:opacity-100 transition-opacity">
-                            {[1, 2, 3].map((row) => (
-                                <div key={row} className="flex justify-between gap-1 h-2">
-                                    {[1, 2, 3, 4, 5, 6, 7].map((col) => (
+                        {/* Github Graph - High Contrast Neon */}
+                        <div className="flex flex-col gap-2 mt-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                            {[
+                                [0, 1, 1, 0, 1, 0, 1],
+                                [1, 0, 1, 1, 0, 1, 0],
+                                [1, 1, 0, 1, 1, 0, 1]
+                            ].map((row, rowIndex) => (
+                                <div key={rowIndex} className="flex justify-between gap-1 h-3">
+                                    {row.map((active, colIndex) => (
                                         <div
-                                            key={col}
+                                            key={colIndex}
                                             className={cn(
-                                                "w-full rounded-sm",
-                                                (row + col) % 2 === 0 ? "bg-green-500 shadow-[0_0_4px_rgba(34,197,94,0.4)]" : "bg-white/5"
+                                                "w-full rounded-sm transition-all duration-500 ease-out",
+                                                active
+                                                    ? "bg-green-500/50 shadow-none group-hover:bg-green-500 group-hover:shadow-[0_0_10px_rgba(34,197,94,0.8)]"
+                                                    : "bg-white/5"
                                             )}
-                                            style={{ opacity: (row * col * 0.1) % 1 || 0.5 }}
                                         />
                                     ))}
                                 </div>
@@ -139,20 +153,20 @@ export default function Hero() {
 
                         <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
                             <span className="text-xs text-gray-500">40+ Projects Completed</span>
-                            <ArrowUpRight className="text-gray-500 size-4" />
+                            <ArrowUpRight className="text-gray-500 size-4 group-hover:text-white transition-colors" />
                         </div>
                     </Card>
                 </motion.div>
 
-                {/* 4. Featured Project (Saral Sahayak) */}
+                {/* 4. Featured Project (Aayush Mishra) */}
                 <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 lg:col-span-2">
                     <Card variant="glass" className="h-full flex flex-col md:flex-row overflow-hidden group shadow-lg hover:shadow-primary/5" hoverEffect>
                         <div className="flex-1 p-8 flex flex-col justify-center">
                             <div className="mb-4">
                                 <div className="inline-block px-3 py-1 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold mb-3 backdrop-blur-sm">
-                                    OpenAI Buildathon Winner
+                                    OpenSource Contributor
                                 </div>
-                                <h2 className="text-3xl font-bold mb-2">Saral Sahayak</h2>
+                                <h2 className="text-3xl font-bold mb-2">Aayush Mishra</h2>
                                 <p className="text-gray-400 text-sm leading-relaxed mb-6">
                                     An AI-powered accessibility assistant that bridges the gap for non-digital natives. Features real-time voice navigation and simplified UI generation.
                                 </p>
@@ -174,7 +188,7 @@ export default function Hero() {
                                     <div className="size-3 rounded-full bg-[#ffbd2e]" />
                                     <div className="size-3 rounded-full bg-[#27c93f]" />
                                 </div>
-                                <div className="ml-4 text-xs text-gray-500">saral-sahayak — index.ts</div>
+                                <div className="ml-4 text-xs text-gray-500">aayush-mishra — index.ts</div>
                             </div>
                             <div className="p-6 text-gray-300 overflow-hidden relative">
                                 <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-[60px] pointer-events-none"></div>
@@ -195,65 +209,81 @@ export default function Hero() {
                 </motion.div>
 
                 {/* 5. Tech Stack (Venn Diagram) */}
-                <motion.div variants={itemVariants} className="col-span-1 md:col-span-1 lg:col-span-1">
-                    <Card variant="glass" className="h-full p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[300px]" hoverEffect>
+                <motion.div variants={itemVariants} whileHover="hover" className="col-span-1 md:col-span-1 lg:col-span-1 z-20 group">
+                    <Card variant="glass" className="h-full p-6 flex flex-col items-center justify-center relative min-h-[300px] !overflow-visible" hoverEffect>
                         <div className="absolute inset-0 bg-gradient-radial from-white/5 to-transparent opacity-50 pointer-events-none"></div>
                         <h3 className="absolute top-6 left-6 text-lg font-bold text-white z-10">Tech Stack</h3>
 
+                        {/* Rotating Container */}
                         <div className="relative w-64 h-64 mt-6">
-                            {/* Circle 1 */}
-                            <motion.div
-                                initial={{ scale: 1 }}
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                                className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-2 border-cyan-500/30 bg-cyan-500/5 flex items-start justify-center pt-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.1)] z-10"
-                            >
-                                <span className="text-[10px] uppercase font-bold text-cyan-200 tracking-wider">Frontend</span>
-                            </motion.div>
+                            {/* Venn Diagram (Nucleus) - Static */}
+                            <div className="absolute inset-0 z-10 transition-transform duration-500 group-hover:scale-90">
+                                {/* Circle 1 */}
+                                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-2 border-cyan-500/30 bg-cyan-500/5 flex items-start justify-center pt-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.1)]">
+                                    <span className="text-[10px] uppercase font-bold text-cyan-200 tracking-wider">Frontend</span>
+                                </div>
+                                {/* Circle 2 */}
+                                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-2 border-purple-500/30 bg-purple-500/5 flex items-end justify-center pb-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(168,85,247,0.1)]">
+                                    <span className="text-[10px] uppercase font-bold text-purple-200 tracking-wider">Backend</span>
+                                </div>
+                                {/* Circle 3 */}
+                                <div className="absolute left-6 top-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-orange-500/30 bg-orange-500/5 flex items-center justify-start pl-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(249,115,22,0.1)]">
+                                    <span className="text-[10px] uppercase font-bold text-orange-200 tracking-wider">DevOps</span>
+                                </div>
+                                {/* Circle 4 */}
+                                <div className="absolute right-6 top-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-pink-500/30 bg-pink-500/5 flex items-center justify-end pr-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(236,72,153,0.1)]">
+                                    <span className="text-[10px] uppercase font-bold text-pink-200 tracking-wider">Cloud</span>
+                                </div>
+                            </div>
 
-                            {/* Circle 2 */}
-                            <motion.div
-                                initial={{ scale: 1 }}
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1.3 }}
-                                className="absolute bottom-6 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-2 border-purple-500/30 bg-purple-500/5 flex items-end justify-center pb-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(168,85,247,0.1)] z-10"
-                            >
-                                <span className="text-[10px] uppercase font-bold text-purple-200 tracking-wider">Backend</span>
-                            </motion.div>
-
-                            {/* Circle 3 - Left */}
-                            <motion.div
-                                initial={{ scale: 1 }}
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.6 }}
-                                className="absolute left-6 top-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-orange-500/30 bg-orange-500/5 flex items-center justify-start pl-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(249,115,22,0.1)] z-10"
-                            >
-                                <span className="text-[10px] uppercase font-bold text-orange-200 tracking-wider">DevOps</span>
-                            </motion.div>
-
-                            {/* Circle 4 - Right */}
-                            <motion.div
-                                initial={{ scale: 1 }}
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 2 }}
-                                className="absolute right-6 top-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-pink-500/30 bg-pink-500/5 flex items-center justify-end pr-4 mix-blend-plus-lighter backdrop-blur-sm shadow-[0_0_20px_rgba(236,72,153,0.1)] z-10"
-                            >
-                                <span className="text-[10px] uppercase font-bold text-pink-200 tracking-wider">Software</span>
-                            </motion.div>
-
-                            {/* Center */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center z-20">
-                                <div className="text-white font-bold text-lg drop-shadow-[0_0_10px_rgba(43,124,238,0.8)]">Me</div>
-                                <div className="absolute inset-0 bg-primary opacity-20 blur-xl rounded-full"></div>
+                            {/* Orbiting Skills Ring (Electrons) - Visible on Hover */}
+                            <div className="absolute inset-[-50px] z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-[spin_12s_linear_infinite] [animation-play-state:paused] group-hover:[animation-play-state:running]">
+                                {[
+                                    { icon: "https://cdn.simpleicons.org/react/61DAFB", name: "React" },
+                                    { icon: "https://cdn.simpleicons.org/nodedotjs/339933", name: "Node" },
+                                    { icon: "https://cdn.simpleicons.org/python/3776AB", name: "Python" },
+                                    { icon: "https://cdn.simpleicons.org/docker/2496ED", name: "Docker" },
+                                    { icon: "https://cdn.simpleicons.org/nextdotjs/ffffff", name: "Next.js" },
+                                    { icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4", name: "Tailwind" },
+                                    { icon: "https://cdn.simpleicons.org/typescript/3178C6", name: "TS" },
+                                    { icon: "https://cdn.simpleicons.org/git/F05032", name: "Git" },
+                                ].map((skill, i, arr) => {
+                                    const angle = (i / arr.length) * 360;
+                                    return (
+                                        <div
+                                            key={i}
+                                            className="absolute top-1/2 left-1/2 w-10 h-10 -ml-5 -mt-5 bg-black/80 rounded-full border border-white/10 flex items-center justify-center shadow-lg backdrop-blur-md"
+                                            style={{
+                                                transform: `rotate(${angle}deg) translate(110px) rotate(-${angle}deg)`, // Position them in circle
+                                            }}
+                                        >
+                                            <div className="w-full h-full animate-[spin_12s_linear_infinite_reverse] [animation-play-state:paused] group-hover:[animation-play-state:running] flex items-center justify-center">
+                                                <img src={skill.icon} alt={skill.name} className="w-5 h-5 opacity-90" />
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
-                        <p className="text-xs text-gray-500 mt-2 text-center w-full">Interactive Expertise</p>
+
+                        {/* Center - Static relative to container rotation (independent) */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center z-20 pointer-events-none">
+                            <div className="text-white font-bold text-lg drop-shadow-[0_0_10px_rgba(43,124,238,0.8)]">Me</div>
+                            <div className="absolute inset-0 bg-primary opacity-20 blur-xl rounded-full"></div>
+                        </div>
+
+                        <p className="text-xs text-gray-500 mt-2 text-center w-full z-20 relative">Interactive Expertise</p>
                     </Card>
                 </motion.div>
 
                 {/* 6. Skills (Full Width) */}
-                <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 lg:col-span-3">
-                    <Card variant="glass" className="p-8 md:p-10 relative overflow-hidden">
+                <motion.div
+                    variants={itemVariants}
+                    className="col-span-1 md:col-span-2 lg:col-span-3"
+                    onHoverStart={() => setIsSkillsHovered(true)}
+                    onHoverEnd={() => setIsSkillsHovered(false)}
+                >
+                    <Card variant="glass" className="p-8 md:p-10 relative overflow-hidden transition-all duration-500 ease-out" hoverEffect>
                         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
                         <div className="relative z-10">
                             <h2 className="text-3xl font-light mb-8 flex items-center gap-3">
@@ -267,27 +297,93 @@ export default function Hero() {
                                 {[
                                     { name: "React & Next.js", level: "95%" },
                                     { name: "Node.js & Express", level: "90%" },
-                                    { name: "Docker & Kubernetes", level: "85%" },
+                                    { name: "Docker & Kubernetes", level: "95%" },
                                     { name: "AWS / Cloud Arch", level: "80%" },
-                                    { name: "Python & Django", level: "75%" },
-                                    { name: "UI/UX Design", level: "70%" },
+                                    { name: "Python & Django", level: "95%" },
+                                    { name: "CI/CD", level: "90%" },
                                 ].map(skill => (
-                                    <div key={skill.name} className="flex flex-col gap-2">
+                                    <motion.div
+                                        key={skill.name}
+                                        className="flex flex-col gap-2 group cursor-default"
+                                        initial="rest"
+                                        whileHover="hover"
+                                        animate="rest"
+                                    >
                                         <div className="flex justify-between items-end">
-                                            <span className="text-sm font-medium text-gray-200">{skill.name}</span>
-                                            <span className="text-xs font-mono text-primary">{skill.level}</span>
+                                            <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">{skill.name}</span>
+                                            <span className="text-xs font-mono text-primary group-hover:text-primary-foreground transition-colors duration-300">{skill.level}</span>
                                         </div>
                                         <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: skill.level }}
-                                                transition={{ duration: 1, ease: "easeOut" }}
-                                                className="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(43,124,238,0.5)]"
-                                            />
+                                                variants={{
+                                                    rest: { filter: "brightness(1)", boxShadow: "0 0 10px rgba(43,124,238,0.5)" },
+                                                    hover: { filter: "brightness(1.3)", boxShadow: "0 0 25px rgba(43,124,238,0.8)" }
+                                                }}
+                                                transition={{ duration: 0.3 }}
+                                                className="h-full bg-primary rounded-full relative"
+                                            >
+                                                <div className="absolute inset-0 bg-white/20 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                            </motion.div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
+
+                            {/* Hidden Skills - Expands on Hover */}
+                            <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{
+                                    height: isSkillsHovered ? "auto" : 0,
+                                    opacity: isSkillsHovered ? 1 : 0
+                                }}
+                                transition={{ duration: 0.5, ease: "circOut" }}
+                                className="overflow-hidden"
+                            >
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6 pt-6">
+                                    {[
+                                        { name: "TypeScript", level: "95%" },
+                                        { name: "PostgreSQL", level: "85%" },
+                                        { name: "Java/Spring", level: "80%" },
+                                        { name: "MongoDB", level: "90%" },
+                                        { name: "Terraform", level: "90%" },
+                                        { name: "WebSockets", level: "85%" },
+                                    ].map(skill => (
+                                        <motion.div
+                                            key={skill.name}
+                                            className="flex flex-col gap-2 group cursor-default"
+                                            initial="rest"
+                                            whileHover="hover"
+                                            animate="rest"
+                                            variants={{
+                                                rest: { x: 0 },
+                                                hover: { x: 5 }
+                                            }}
+                                        >
+                                            <div className="flex justify-between items-end">
+                                                <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">{skill.name}</span>
+                                                <span className="text-xs font-mono text-primary group-hover:text-primary-foreground transition-colors duration-300">{skill.level}</span>
+                                            </div>
+                                            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    whileInView={{ width: skill.level }} // This might re-trigger on expand
+                                                    viewport={{ once: false }}
+                                                    variants={{
+                                                        rest: { filter: "brightness(1)", boxShadow: "0 0 10px rgba(43,124,238,0.5)" },
+                                                        hover: { filter: "brightness(1.3)", boxShadow: "0 0 25px rgba(43,124,238,0.8)" }
+                                                    }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="h-full bg-primary rounded-full relative"
+                                                >
+                                                    <div className="absolute inset-0 bg-white/20 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                </motion.div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
                         </div>
                     </Card>
                 </motion.div>
