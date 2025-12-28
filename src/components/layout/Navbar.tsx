@@ -1,17 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { Terminal, Lightbulb, Menu, Download } from "lucide-react";
+import { Terminal, Menu, Download } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+    const [mounted, setMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
@@ -23,8 +25,8 @@ export default function Navbar() {
         { name: "Home", href: "/" },
         { name: "Projects", href: "/projects" },
         { name: "Experience", href: "/experience" },
-        { name: "GitHub", href: "https://github.com" }, // Ideally replace with actual link
-        { name: "LinkedIn", href: "https://linkedin.com" } // Ideally replace with actual link
+        { name: "GitHub", href: "https://github.com", icon: "/icons/github.png" },
+        { name: "LinkedIn", href: "https://linkedin.com", icon: "/icons/linkedin.png" }
     ];
 
     return (
@@ -38,11 +40,12 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 {/* Logo */}
+                {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
-                    <div className="size-8 rounded-lg bg-white/10 flex items-center justify-center text-white backdrop-blur-md shadow-lg border border-white/10">
+                    <div className="size-8 rounded-lg bg-primary/10 dark:bg-white/10 flex items-center justify-center text-primary dark:text-white backdrop-blur-md shadow-lg border border-primary/10 dark:border-white/10">
                         <Terminal className="size-5" />
                     </div>
-                    <span className="font-bold text-lg tracking-tight">Mishra</span>
+                    <span className="font-bold text-lg tracking-tight text-foreground">Mishra</span>
                 </Link>
 
                 {/* Desktop Links */}
@@ -52,23 +55,26 @@ export default function Navbar() {
                             key={item.name}
                             href={item.href}
                             className={cn(
-                                "text-sm font-medium transition-colors",
-                                pathname === item.href ? "text-white" : "text-gray-300 hover:text-white"
+                                "text-sm font-medium transition-colors flex items-center justify-center",
+                                pathname === item.href ? "text-foreground" : "text-gray-600 dark:text-gray-300 hover:text-foreground"
                             )}
                         >
-                            {item.name}
+                            {item.icon ? (
+                                <div className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+                                    <img src={item.icon} alt={item.name} className="w-5 h-5 dark:invert opacity-80 hover:opacity-100 rounded-lg" />
+                                </div>
+                            ) : (
+                                item.name
+                            )}
                         </Link>
                     ))}
 
-                    <Button variant="ghost" size="icon" className="rounded-full">
-                        <Lightbulb className="size-5" />
-                    </Button>
-
-                    <Button variant="primary" size="md">
-                        Contact Me
-                    </Button>
+                    <a href="/contact">
+                        <Button variant="primary" size="lg" className="rounded-full px-6 shadow-[0_0_20px_rgba(43,124,238,0.4)] hover:shadow-[0_0_30px_rgba(43,124,238,0.6)]">
+                            Contact Me
+                        </Button>
+                    </a>
                 </div>
-
                 {/* Mobile Menu */}
                 <div className="md:hidden text-white">
                     <Menu className="size-6" />
