@@ -1,6 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
-import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -8,7 +7,6 @@ export default function Home() {
       <Navbar />
       <div className="w-full flex flex-col gap-0">
         <Hero />
-        <Contact />
       </div>
 
       {/* Footer */}
