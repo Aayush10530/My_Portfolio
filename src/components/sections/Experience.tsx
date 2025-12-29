@@ -37,7 +37,7 @@ const experiences = [
     {
         role: "Software Engineering Intern",
         company: "InnovateLabs",
-        period: "Jun 2018 - Dec 2018",
+        period: "Jun 2025 - Dec 2025",
         location: "Austin, TX",
         description: [
             "Assisted in the development of internal tools using Python and Flask to automate data entry tasks.",
@@ -63,7 +63,7 @@ export default function Experience() {
                 </div>
                 <Card variant="glass" className="flex gap-4 p-6 rounded-2xl">
                     <div className="flex flex-col">
-                        <span className="text-3xl font-bold text-white">7+</span>
+                        <span className="text-3xl font-bold text-white">1+</span>
                         <span className="text-sm text-gray-500 uppercase tracking-wider">Years Exp.</span>
                     </div>
                     <div className="w-px h-12 bg-white/10"></div>

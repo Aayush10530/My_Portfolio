@@ -1,27 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PlayCircle, Code, Terminal, Smartphone, Database, FileText, Cloud } from "lucide-react";
+import { PlayCircle, Code, Terminal, Smartphone, Database, FileText, Cloud, ScanFace } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
 const projects = [
     {
-        title: "Cloud Infrastructure Automation",
-        description: "Automated deployment pipelines using Terraform and AWS for high-availability Kubernetes clusters with zero-downtime upgrades.",
-        tags: ["Terraform", "AWS EKS", "GitLab CI"],
+        title: "Face Time",
+        description: "Real-time Face Recognition Attendance System using Python & OpenCV. Captures faces, marks attendance, and stores storage in Excel/CSV.",
+        tags: ["Python", "OpenCV", "Tkinter", "Pandas"],
         color: "#2b7cee",
-        icon: Terminal,
+        icon: ScanFace,
         visual: (
-            <div className="font-mono text-xs text-green-400 space-y-1 z-10 drop-shadow-md p-4">
-                <p><span className="text-blue-400">➜</span> <span className="text-purple-400">~/infra</span> terraform apply</p>
-                <p className="text-gray-400">Terraform will perform the following actions:</p>
-                <p className="text-gray-400 pl-2">  # aws_eks_cluster.main will be created</p>
-                <p className="text-gray-400 pl-2">  + resource "aws_eks_cluster" "main" {"{"}</p>
-                <p className="text-gray-400 pl-4">      + arn     = (known after apply)</p>
-                <p className="text-gray-400 pl-4">      + status  = "ACTIVE"</p>
-                <p className="text-gray-400 pl-2">    {"}"}</p>
-                <p className="animate-pulse">_</p>
+            <div className="font-mono text-xs text-gray-300 space-y-1 z-10 p-4 w-full">
+                <div className="flex items-center gap-2 mb-2 border-b border-white/10 pb-2">
+                    <div className="size-2 rounded-full bg-red-500"></div>
+                    <div className="size-2 rounded-full bg-yellow-500"></div>
+                    <div className="size-2 rounded-full bg-green-500"></div>
+                    <span className="text-[10px] text-gray-500 ml-2">attendance_sys.py</span>
+                </div>
+                <p><span className="text-green-400">➜</span> python3 <span className="text-yellow-300">main.py</span></p>
+                <div className="pl-2 border-l-2 border-white/10 mt-2 space-y-1">
+                    <p><span className="text-blue-400">[INFO]</span> Loading encodings...</p>
+                    <p><span className="text-blue-400">[INFO]</span> Starting video stream...</p>
+                    <p className="animate-pulse"><span className="text-green-400">[FOUND]</span> Face: <span className="font-bold text-white">Aayush</span> (98%)</p>
+                    <p className="text-gray-500 text-[10px]">>> Marked present at 09:42:15</p>
+                    <p className="text-gray-500 text-[10px]">>> Saved to attendance.csv</p>
+                </div>
             </div>
         )
     },
