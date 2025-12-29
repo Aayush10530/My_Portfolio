@@ -120,8 +120,8 @@ export default function Hero() {
                     <Card variant="glass" className="h-full p-6 flex flex-col group hover:border-primary/30 transition-colors" hoverEffect>
                         <div className="flex items-start justify-between mb-auto">
                             <div>
-                                <p className="text-3xl font-bold text-foreground drop-shadow-sm">900+</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">Commits this year</p>
+                                <p className="text-3xl font-bold text-foreground drop-shadow-sm">20+ Projects</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Transformed my ideas into reality</p>
                             </div>
                             <div className="size-10 rounded-full bg-primary/10 dark:bg-white/5 flex items-center justify-center border border-white/5 backdrop-blur-sm">
                                 <PieChart className="text-foreground/70 size-5" />
@@ -152,7 +152,7 @@ export default function Hero() {
                         </div>
 
                         <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-                            <span className="text-xs text-gray-500">40+ Projects Completed</span>
+                            <span className="text-xs text-gray-500"></span>
                             <ArrowUpRight className="text-gray-500 size-4 group-hover:text-white transition-colors" />
                         </div>
                     </Card>
