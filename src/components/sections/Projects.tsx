@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-
-import { PlayCircle, Code, Terminal, Smartphone, Database, FileText, Cloud, ScanFace, Zap, Sparkles, Mic, Globe, Plane, MapPin, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { PlayCircle, Code, Terminal, Smartphone, Database, FileText, Cloud, ScanFace, Zap, Sparkles, Plane, MapPin, Star, Brain, Calculator, Languages, Palette, GraduationCap } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
@@ -58,97 +58,50 @@ const projects: Project[] = [
         repoUrl: "https://github.com/Aayush10530/Velvitra",
         category: "Full Stack",
         visual: (
-            <div className="relative w-full h-full bg-[#1c1917] flex items-center justify-center overflow-hidden border border-white/5">
-                {/* Dynamic Map Background */}
-                <div className="absolute inset-0 opacity-40">
-                    <svg className="w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-                        </pattern>
-                        <rect width="100%" height="100%" fill="url(#grid)" />
-
-                        {/* Animated Flight Path */}
-                        <motion.path
-                            d="M 50,200 Q 150,50 350,120"
-                            fill="none"
-                            stroke="url(#gradient)"
-                            strokeWidth="2"
-                            strokeDasharray="10 5"
-                            initial={{ strokeDashoffset: 100 }}
-                            animate={{ strokeDashoffset: 0 }}
-                            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                        />
-                        <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="rgba(255, 189, 46, 0.2)" />
-                                <stop offset="100%" stopColor="rgba(255, 189, 46, 0.8)" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+            <div className="relative w-full h-full group/image overflow-hidden">
+                {/* Background Image - Taj Mahal */}
+                <div className="absolute inset-0">
+                    <Image
+                        src="/projects/velvitra.png"
+                        alt="Taj Mahal"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover/image:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
                 </div>
 
-                {/* Glassmorphic Flight Card */}
-                <div className="relative z-10 w-64 backdrop-blur-xl bg-black/40 border border-white/10 rounded-2xl p-5 shadow-2xl skew-x-[-2deg] hover:skew-x-0 transition-transform duration-500 hover:scale-105">
-                    {/* Header */}
-                    <div className="flex justify-between items-center mb-6">
-                        <div className="flex items-center gap-2">
-                            <div className="size-6 bg-orange-500/20 rounded-full flex items-center justify-center">
-                                <Plane className="size-3 text-orange-400 fill-orange-400" />
-                            </div>
-                            <span className="text-[10px] uppercase tracking-wider text-gray-400 font-semibold">Velvitra Air</span>
-                        </div>
-                        <span className="text-[10px] font-mono text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full">ON TIME</span>
-                    </div>
-
-                    {/* Route Info */}
-                    <div className="flex justify-between items-center mb-6 px-1">
-                        <div className="text-center">
-                            <div className="text-2xl font-black text-white tracking-tight">DEL</div>
-                            <div className="text-[10px] text-gray-500">New Delhi</div>
-                        </div>
-
-                        {/* Flight Path Visual */}
-                        <div className="flex-1 px-3 flex flex-col items-center gap-1">
-                            <div className="w-full h-[1px] bg-white/20 relative">
-                                <motion.div
-                                    animate={{ left: ["0%", "100%"] }}
-                                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -top-1 size-2 bg-orange-500 rounded-full shadow-[0_0_10px_#f97316]"
-                                />
-                            </div>
-                            <span className="text-[9px] text-gray-500 font-mono">14H 20M</span>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="text-2xl font-black text-white tracking-tight">JFK</div>
-                            <div className="text-[10px] text-gray-500">New York</div>
-                        </div>
-                    </div>
-
-                    {/* Footer Details */}
-                    <div className="grid grid-cols-2 gap-2 border-t border-white/10 pt-4">
+                {/* Floating Tour Card */}
+                <div className="absolute bottom-4 left-4 right-4 backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-3 shadow-2xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="flex justify-between items-start mb-2">
                         <div>
-                            <div className="text-[9px] text-gray-500 uppercase">Boarding</div>
-                            <div className="text-xs font-bold text-white">08:45 AM</div>
+                            <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
+                                <MapPin className="size-3 text-orange-400 fill-orange-400" />
+                                Agra, India
+                            </h4>
+                            <p className="text-[10px] text-gray-300 mt-0.5">Taj Mahal Sunrise Tour</p>
                         </div>
-                        <div className="text-right">
-                            <div className="text-[9px] text-gray-500 uppercase">Gate</div>
-                            <div className="text-xs font-bold text-orange-400">A12</div>
+                        <div className="flex items-center gap-1 bg-black/40 rounded-full px-2 py-0.5 border border-white/10">
+                            <Star className="size-2.5 text-yellow-400 fill-yellow-400" />
+                            <span className="text-[10px] font-bold text-white">4.9</span>
                         </div>
                     </div>
 
-                    {/* Reflection/Sheen */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
+                    <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
+                        <div className="text-[10px] text-gray-400">Starting from <span className="text-white font-bold text-xs">$25</span></div>
+                        <div className="text-[10px] font-bold text-orange-400 flex items-center gap-1">
+                            BOOK NOW
+                        </div>
+                    </div>
                 </div>
 
-                {/* Background Decoration */}
-                <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-8 -right-8"
-                >
-                    <Cloud className="size-32 text-white/5" />
-                </motion.div>
+                {/* Live Badge */}
+                <div className="absolute top-3 right-3 bg-red-500/20 backdrop-blur-md border border-red-500/30 px-2 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="relative flex size-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full size-1.5 bg-red-500"></span>
+                    </span>
+                    <span className="text-[9px] font-bold text-red-200">LIVE</span>
+                </div>
             </div>
         )
     },
@@ -209,51 +162,104 @@ const projects: Project[] = [
         repoUrl: "https://github.com/Aayush10530/MagicMinds",
         category: "Full Stack",
         visual: (
-            <div className="relative w-full h-full bg-[#1e1b4b] flex items-center justify-center overflow-hidden">
-                {/* Magical Background */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.2),transparent_70%)]"></div>
+            <div className="relative w-full h-full bg-[#1e1b4b] flex items-center justify-center overflow-hidden border border-white/5">
+                {/* Mystical Background */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.15),transparent_60%)]"></div>
 
-                {/* Floating Particles */}
-                {[...Array(5)].map((_, i) => (
+                {/* Floating Science/Math Particles */}
+                {[...Array(6)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute size-1 bg-purple-400 rounded-full"
-                        initial={{ x: Math.random() * 100 - 50, y: Math.random() * 100 - 50, opacity: 0 }}
+                        className="absolute text-purple-300/20 font-mono text-xs"
+                        initial={{ x: Math.random() * 200 - 100, y: Math.random() * 200 - 100, opacity: 0 }}
                         animate={{
-                            y: [0, -20, 0],
-                            opacity: [0, 1, 0],
-                            scale: [0, 1, 0]
+                            y: [0, -40, 0],
+                            opacity: [0, 0.8, 0],
+                            rotate: [0, 360]
                         }}
                         transition={{
-                            duration: 2 + Math.random(),
+                            duration: 4 + Math.random() * 3,
                             repeat: Infinity,
-                            delay: Math.random() * 2
+                            delay: Math.random() * 3,
+                            ease: "easeInOut"
                         }}
                         style={{ left: `${20 + Math.random() * 60}%`, top: `${20 + Math.random() * 60}%` }}
-                    />
+                    >
+                        {["E=mc²", "π", "∑", "∫", "Aa", "あ"][i]}
+                    </motion.div>
                 ))}
 
-                {/* Central Orb / Voice Interface */}
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                    <div className="relative flex items-center justify-center">
-                        {/* Pulsing Rings */}
-                        <motion.div
-                            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="absolute size-20 rounded-full border border-purple-500/50"
-                        />
-                        <motion.div
-                            animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                            className="absolute size-20 rounded-full border border-purple-500/30"
-                        />
+                {/* Central AI Brain Orb */}
+                <div className="relative z-10 flex flex-col items-center justify-center">
 
-                        {/* Main Icon Circle */}
-                        <div className="size-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.5)] group-hover:scale-110 transition-transform duration-500">
-                            <Mic className="size-8 text-white" />
+                    {/* Orbiting Subject Icons */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="absolute size-40 -top-8 -left-8 rounded-full border border-dashed border-purple-500/20"
+                        />
+                        {/* Orbiting Items */}
+                        {[
+                            { Icon: Calculator, color: "text-blue-400", delay: 0 },
+                            { Icon: Palette, color: "text-pink-400", delay: 1.5 },
+                            { Icon: Languages, color: "text-green-400", delay: 3 },
+                            { Icon: GraduationCap, color: "text-yellow-400", delay: 4.5 }
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                className="absolute top-1/2 left-1/2"
+                                animate={{
+                                    x: [60 * Math.cos(index * Math.PI / 2), 60 * Math.cos((index * Math.PI / 2) + 2 * Math.PI)],
+                                    y: [60 * Math.sin(index * Math.PI / 2), 60 * Math.sin((index * Math.PI / 2) + 2 * Math.PI)],
+                                }}
+                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                            >
+                                <div className={`p-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/10 ${item.color}`}>
+                                    <item.Icon className="size-3" />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Main Orb */}
+                    <div className="relative">
+                        <motion.div
+                            animate={{ scale: [1, 1.1, 1] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            className="size-24 rounded-full bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 shadow-[0_0_50px_rgba(139,92,246,0.5)] flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-500"
+                        >
+                            {/* Inner Brain Texture */}
+                            <div className="absolute inset-0 opacity-30 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
+                            <Brain className="size-12 text-white relative z-10 drop-shadow-md" />
+
+                            {/* Gloss */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent rounded-full" />
+                        </motion.div>
+
+                        {/* Voice Waveform Activity */}
+                        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-end gap-1 h-8">
+                            {[...Array(5)].map((_, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="w-1 bg-purple-400 rounded-full"
+                                    animate={{ height: [4, 16 + Math.random() * 16, 4] }}
+                                    transition={{ duration: 0.5 + Math.random() * 0.5, repeat: Infinity, ease: "easeInOut" }}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
+
+                {/* Status Pill */}
+                <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    className="absolute bottom-4 right-4 bg-white/5 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2"
+                >
+                    <div className="size-1.5 bg-green-400 rounded-full animate-pulse" />
+                    <span className="text-[10px] font-medium text-purple-200">Listening...</span>
+                </motion.div>
             </div>
         )
     },
