@@ -1,52 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Cloud, Rocket, GraduationCap, Download } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
 const experiences = [
     {
-        role: "Senior DevOps Engineer",
-        company: "TechCorp Inc.",
-        period: "Oct 2022 - Present",
-        location: "San Francisco, CA (Remote)",
+        role: "DevOps Intern",
+        company: "Xebia",
+        period: "June 2025 - Aug. 2025",
+        location: "Remote",
         description: [
-            "Spearheaded the migration of legacy monoliths to microservices on Kubernetes, improving system scalability by 300% during peak loads.",
-            "Implemented a comprehensive GitOps workflow using ArgoCD, reducing deployment times from hours to roughly 15 minutes.",
-            "Mentored 3 junior engineers and conducted weekly infrastructure architectural reviews to ensure best practices."
+            "Automated CI/CD pipeline for a fintech web application serving over 500 users, reducing deployment time by 70% and achieving zero downtime deployments across 7+ releases.",
+            "Provisioned AWS infrastructure with Terraform, creating 20+ reusable modules to boost deployment consistency.",
+            "Designed pipelines, integrated security tools and built reusable Terraform modules, cutting deployment times by 40%."
         ],
-        tags: ["Kubernetes", "AWS", "Terraform", "Go", "Prometheus"],
+        tags: ["Terraform", "Jenkins", "AWS", "Prometheus", "Git"],
         icon: Cloud,
-        current: true
+        current: false
     },
     {
         role: "Full Stack Developer",
-        company: "StartupX",
-        period: "Jan 2019 - Sep 2022",
-        location: "New York, NY",
+        company: "Independent Projects",
+        period: "Jan 2024 - Aug 2024",
+        location: "Remote",
         description: [
-            "Developed and maintained high-traffic web applications using React.js and Node.js, serving over 50k daily active users.",
+            "Developed and maintained high-traffic web applications using TypeScript, React.js and Node.js, serving over 50k daily active users.",
             "Optimized complex database queries in PostgreSQL, reducing average API response time by 40%.",
-            "Integrated third-party payment gateways (Stripe) and handled secure data processing compliant with PCI-DSS standards."
+            "Integrated third-party payment gateways (RazorPay) and handled secure data processing compliant with PCI-DSS standards."
         ],
-        tags: ["React", "Node.js", "PostgreSQL", "Redis"],
+        tags: ["TypeScript", "React", "Node.js", "PostgreSQL", "Redis/ MongoDB", "AWS"],
         icon: Rocket,
         current: false
     },
     {
-        role: "Software Engineering Intern",
-        company: "InnovateLabs",
-        period: "Jun 2025 - Dec 2025",
-        location: "Austin, TX",
+        role: "DevOps Bootcamp Trainee",
+        company: "INT College (Israel)",
+        period: "Sept 2024",
+        location: "UPES",
+
         description: [
-            "Assisted in the development of internal tools using Python and Flask to automate data entry tasks.",
-            "Collaborated with senior developers to fix bugs in the core product dashboard."
+            "Participated in a 1-week intensive bootcamp gaining hands-on experience in CI/CD, containerization and orchestration.",
+            "Studied real-world DevOps implementation strategies, including Netflix's architecture, to understand theoretical concepts of scalability and chaos engineering.",
+            "Strengthened my problem-solving approach regarding infrastructure automation and deployment workflows."
         ],
-        tags: ["Python", "Flask", "Git"],
+        tags: ["CI/CD", "Docker", "Kubernetes"],
         icon: GraduationCap,
         current: false
-    }
+    },
+
 ];
 
 export default function Experience() {
@@ -106,8 +110,12 @@ export default function Experience() {
 
                                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-gray-400 mb-6">
                                         <span className="font-medium text-white">{exp.company}</span>
-                                        <span className="size-1 rounded-full bg-gray-600"></span>
-                                        <span>{exp.location}</span>
+                                        {exp.location && (
+                                            <>
+                                                <span className="size-1 rounded-full bg-gray-600"></span>
+                                                <span>{exp.location}</span>
+                                            </>
+                                        )}
                                     </div>
 
                                     <ul className="flex flex-col gap-3 mb-8 text-gray-300 leading-relaxed list-none">
@@ -139,7 +147,9 @@ export default function Experience() {
                     Check out my projects page for deep dives into the code, or download my resume for a structured overview.
                 </p>
                 <div className="flex gap-4">
-                    <Button variant="primary" size="lg">View Projects</Button>
+                    <Link href="/projects">
+                        <Button variant="primary" size="lg">View Projects</Button>
+                    </Link>
                     <Button variant="glass" size="lg"><Download className="size-4 mr-2" /> Download CV</Button>
                 </div>
             </div>

@@ -95,7 +95,7 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <Link href="#contact">
+                    <Link href="/#contact">
                         <Button variant="primary" size="lg" className="rounded-full px-6 shadow-[0_0_20px_rgba(43,124,238,0.4)] hover:shadow-[0_0_30px_rgba(43,124,238,0.6)]">
                             Contact Me
                         </Button>

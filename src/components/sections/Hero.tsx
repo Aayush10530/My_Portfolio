@@ -415,7 +415,7 @@ export default function Hero() {
                                 </p>
                                 <div className="space-y-4">
                                     {[
-                                        { icon: Mail, text: "hello@mishra.dev" },
+                                        { icon: Mail, text: "aayushmishra01530@gmail.com" },
                                         { icon: MapPin, text: "Remote, India" },
                                         { icon: Briefcase, text: "Open to Freelance" }
                                     ].map((item, i) => (
