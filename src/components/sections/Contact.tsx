@@ -23,7 +23,7 @@ export default function Contact() {
         // Simulate sending
         setTimeout(() => {
             setIsSubmitting(false);
-            window.location.href = `mailto:hello@mishra.dev?subject=${encodeURIComponent(formState.subject)}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`)}`;
+            window.location.href = `mailto:aayushmishra01530@gmail.com?subject=${encodeURIComponent(formState.subject)}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`)}`;
         }, 1000);
     };
 
@@ -66,7 +66,7 @@ export default function Contact() {
                                     <div className="p-3 rounded-xl bg-white/5 border border-white/5 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all">
                                         <Mail className="size-6 text-gray-400 group-hover:text-primary transition-colors" />
                                     </div>
-                                    <span className="text-gray-300 font-medium">hello@mishra.dev</span>
+                                    <span className="text-gray-300 font-medium">aayushmishra01530@gmail.com</span>
                                 </div>
 
                                 <div className="flex items-center gap-4 group">
