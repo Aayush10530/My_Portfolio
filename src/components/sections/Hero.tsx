@@ -445,7 +445,7 @@ export default function Hero() {
                                     e.preventDefault();
                                     const formData = new FormData(e.currentTarget);
                                     const subject = formData.get('subject') as string;
-                                    const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\n${formData.get('message')}`;
+                                    const body = formData.get('message') as string;
                                     window.location.href = `mailto:aayushmishra01530@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                                 }}
                             >
