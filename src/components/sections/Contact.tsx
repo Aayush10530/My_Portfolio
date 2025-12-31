@@ -22,7 +22,7 @@ export default function Contact() {
         // Simulate sending
         setTimeout(() => {
             setIsSubmitting(false);
-            window.location.href = `mailto:aayushmishra01530@gmail.com?subject=${encodeURIComponent(formState.subject)}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`)}`;
+            window.location.href = `mailto:aayushmishra01530@gmail.com?subject=${encodeURIComponent(formState.subject)}&body=${encodeURIComponent(formState.message)}`;
         }, 1000);
     };
 
