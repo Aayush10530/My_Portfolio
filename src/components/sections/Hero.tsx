@@ -193,11 +193,11 @@ export default function Hero() {
                             <div className="p-6 text-gray-700 dark:text-gray-300 overflow-hidden relative">
                                 <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-[60px] pointer-events-none"></div>
                                 <div className="leading-relaxed relative z-10 text-xs md:text-sm">
-                                    <p><span className="text-purple-400">import</span> {"{ "} <span className="text-yellow-300">OpenAI</span> {" }"} <span className="text-purple-400">from</span> <span className="text-green-300">'openai'</span>;</p>
+                                    <p><span className="text-purple-400">import</span> {"{ "} <span className="text-yellow-300">OpenAI</span> {" }"} <span className="text-purple-400">from</span> <span className="text-green-300">&apos;openai&apos;</span>;</p>
                                     <br />
                                     <p><span className="text-blue-400">const</span> <span className="text-yellow-200">response</span> = <span className="text-blue-400">async</span> (input) ={">"} {"{"}</p>
                                     <p className="pl-4"><span className="text-blue-400">const</span> completion = <span className="text-blue-400">await</span> openai.chat({"{"}</p>
-                                    <p className="pl-8">model: <span className="text-green-300">'gpt-4-turbo'</span>,</p>
+                                    <p className="pl-8">model: <span className="text-green-300">&apos;gpt-4-turbo&apos;</span>,</p>
                                     <p className="pl-4">{"});"}</p>
                                     <p className="pl-4"><span className="text-purple-400">return</span> completion;</p>
                                     <p>{"};"}</p>
@@ -409,7 +409,7 @@ export default function Hero() {
                         <div className="p-8 md:p-12 relative flex flex-col justify-between">
                             <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
                             <div>
-                                <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">Let's <span className="font-bold">Collaborate</span></h2>
+                                <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">Let&apos;s <span className="font-bold">Collaborate</span></h2>
                                 <p className="text-gray-400 leading-relaxed mb-8">
                                     Interested in scaling your infrastructure or building a next-gen application? Drop me a line.
                                 </p>

@@ -9,13 +9,11 @@ import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-    const [mounted, setMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
-        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };

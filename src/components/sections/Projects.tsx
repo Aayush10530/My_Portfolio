@@ -12,7 +12,7 @@ interface Project {
     description: string;
     tags: string[];
     color: string;
-    icon: any;
+    icon: React.ElementType;
     demoUrl?: string | null;
     repoUrl?: string;
     visual: React.ReactNode;
