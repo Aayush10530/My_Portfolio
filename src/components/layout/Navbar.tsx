@@ -9,13 +9,11 @@ import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-    const [mounted, setMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
-        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
@@ -86,9 +84,11 @@ export default function Navbar() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <img
+                                <Image
                                     src={item.icon}
                                     alt={item.name}
+                                    width={20}
+                                    height={20}
                                     className="size-5 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
                                 />
                             </Link>
@@ -134,7 +134,7 @@ export default function Navbar() {
                                 rel="noopener noreferrer"
                                 className="p-3 bg-white/5 rounded-full"
                             >
-                                <img src={item.icon} alt={item.name} className="size-5 dark:invert opacity-70" />
+                                <Image src={item.icon} alt={item.name} width={20} height={20} className="size-5 dark:invert opacity-70" />
                             </Link>
                         ))}
                     </div>

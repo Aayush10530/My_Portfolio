@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Briefcase, Send, Code, Terminal } from "lucide-react";
+import { Mail, MapPin, Briefcase, Code, Terminal } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
 
 export default function Contact() {
     const [formState, setFormState] = useState({
