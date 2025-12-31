@@ -401,7 +401,7 @@ export default function Hero() {
 
                 {/* 7. Contact */}
                 <motion.div
-                    id="contact"
+                    id="contact-card"
                     variants={itemVariants}
                     className="col-span-1 md:col-span-2 lg:col-span-3"
                 >
