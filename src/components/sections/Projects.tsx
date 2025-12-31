@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { PlayCircle, Code, Terminal, Smartphone, Database, FileText, Cloud, ScanFace, Zap, Sparkles, Plane, MapPin, Star, Brain, Calculator, Languages, Palette, GraduationCap } from "lucide-react";
+import { PlayCircle, Code, Terminal, Smartphone, Database, Cloud, ScanFace, Zap, Sparkles, MapPin, Star, Brain, Calculator, Languages, Palette, GraduationCap } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
@@ -12,7 +12,7 @@ interface Project {
     description: string;
     tags: string[];
     color: string;
-    icon: any;
+    icon: React.ElementType;
     demoUrl?: string | null;
     repoUrl?: string;
     visual: React.ReactNode;
@@ -381,7 +381,7 @@ export default function Projects() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProjects.map((project, index) => (
+                {filteredProjects.map((project) => (
                     <motion.div
                         key={project.title}
                         layout
