@@ -446,7 +446,7 @@ export default function Hero() {
                                     const formData = new FormData(e.currentTarget);
                                     const subject = formData.get('subject') as string;
                                     const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\n${formData.get('message')}`;
-                                    window.location.href = `mailto:hello@mishra.dev?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                                    window.location.href = `mailto:aayushmishra01530@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                                 }}
                             >
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
