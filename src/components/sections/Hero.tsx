@@ -209,7 +209,7 @@ export default function Hero() {
                 </motion.div>
 
                 {/* 5. Tech Stack (Venn Diagram) */}
-                <motion.div variants={itemVariants} whileHover="hover" className="col-span-1 md:col-span-1 lg:col-span-1 z-20 group">
+                <motion.div variants={itemVariants} className="col-span-1 md:col-span-1 lg:col-span-1 z-20 group">
                     <Card variant="glass" className="h-full p-6 flex flex-col items-center justify-center relative min-h-[300px] !overflow-visible" hoverEffect>
                         <div className="absolute inset-0 bg-gradient-radial from-white/5 to-transparent opacity-50 pointer-events-none"></div>
                         <h3 className="absolute top-6 left-6 text-lg font-bold text-foreground z-10">Tech Stack</h3>
