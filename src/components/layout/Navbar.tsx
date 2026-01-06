@@ -6,12 +6,13 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -98,7 +99,11 @@ export default function Navbar() {
 
                         <Button
                             onClick={() => {
-                                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                                if (pathname === "/") {
+                                    document.getElementById("contact-card")?.scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                    router.push("/#contact-card");
+                                }
                             }}
                             className="rounded-full bg-[#1e60f5] hover:bg-[#1a55d6] text-white px-6 font-medium shadow-lg hover:shadow-blue-500/20 border-none h-10 transition-transform duration-300 hover:scale-105"
                         >
@@ -132,7 +137,7 @@ export default function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
-                        <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link href="/#contact-card" onClick={() => setIsMobileMenuOpen(false)}>
                             <Button className="rounded-full bg-[#1e60f5] px-8 py-6 text-lg">Contact Me</Button>
                         </Link>
                     </div>

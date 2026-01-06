@@ -168,7 +168,7 @@ export default function Hero() {
                                 </div>
                                 <h2 className="text-3xl font-bold mb-2 text-foreground">Magic Minds</h2>
                                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-                                    MagicMinds, A voice-based conversational AI that acts as a human-like learning companion for children. It enables natural, spoken interaction and contextual roleplay, helping kids practice real-world conversations and develop practical communication skills through engaging, personalized learning rather than rote memorization.
+                                    MagicMinds, Voice-based conversational AI that acts as a human-like learning companion for children. It enables natural, spoken interaction and contextual roleplay, helping kids practice real-world conversations and develop practical communication skills through engaging, personalized learning rather than rote memorization.
                                 </p>
                             </div>
 
