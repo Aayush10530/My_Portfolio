@@ -96,13 +96,17 @@ export default function Navbar() {
                             ))}
                         </div>
 
-                        <Link href="/#contact-card">
+                        <button
+                            onClick={() => {
+                                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                        >
                             <Button
                                 className="rounded-full bg-[#1e60f5] hover:bg-[#1a55d6] text-white px-6 font-medium shadow-lg hover:shadow-blue-500/20 border-none h-10 transition-transform duration-300 hover:scale-105"
                             >
                                 Contact Me
                             </Button>
-                        </Link>
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}

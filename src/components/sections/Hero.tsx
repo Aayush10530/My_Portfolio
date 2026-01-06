@@ -34,7 +34,7 @@ const itemVariants: Variants = {
 export default function Hero() {
     const { scrollY } = useScroll();
     const parallaxY = useTransform(scrollY, [0, 500], [0, -50]);
-    const [isSkillsHovered, setIsSkillsHovered] = useState(false);
+
 
     return (
         <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24">
@@ -168,8 +168,7 @@ export default function Hero() {
                                 </div>
                                 <h2 className="text-3xl font-bold mb-2 text-foreground">Magic Minds</h2>
                                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-                                    MagicMinds, A voice-based conversational AI that acts as a human-like learning companion for children.
-                                    It enables natural, spoken interaction and contextual roleplay, helping kids practice real-world conversations and develop practical communication skills through engaging, personalized learning rather than rote memorization.
+                                    MagicMinds, A voice-based conversational AI that acts as a human-like learning companion for children. It enables natural, spoken interaction and contextual roleplay, helping kids practice real-world conversations and develop practical communication skills through engaging, personalized learning rather than rote memorization.
                                 </p>
                             </div>
 
@@ -316,114 +315,109 @@ export default function Hero() {
                     </Card>
                 </motion.div>
 
-                {/* 6. Skills (Full Width) */}
+                {/* 6. Skills (Infinite Marquee) */}
                 <motion.div
                     variants={itemVariants}
                     className="col-span-1 md:col-span-2 lg:col-span-3"
-                    onHoverStart={() => setIsSkillsHovered(true)}
-                    onHoverEnd={() => setIsSkillsHovered(false)}
                 >
-                    <Card variant="glass" className="p-8 md:p-10 relative overflow-hidden transition-all duration-500 ease-out" hoverEffect>
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
-                        <div className="relative z-10">
-                            <h2 className="text-3xl font-light mb-8 flex items-center gap-3">
-                                <div className="p-2 bg-primary/20 rounded-lg">
-                                    <Database className="text-primary size-6" />
-                                </div>
-                                Skills & Proficiency
-                            </h2>
+                    <Card variant="glass" className="p-8 md:p-10 relative overflow-hidden flex flex-col justify-center min-h-[180px]" hoverEffect>
+                        <h2 className="text-xl font-light mb-6 flex items-center gap-3 text-muted-foreground">
+                            <Database className="text-primary size-5" />
+                            Tech & Tools
+                        </h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6">
+                        <div className="relative w-full overflow-hidden mask-gradient-x">
+                            {/* Gradient Masks for fade effect */}
+                            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[var(--surface-glass)] to-transparent z-10"></div>
+                            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[var(--surface-glass)] to-transparent z-10"></div>
+
+                            {/* Scrolling Wrapper - Row 1 (Frontend & Design) */}
+                            <div className="flex w-max animate-marquee gap-4 mb-4 group-hover:[animation-play-state:paused]">
+                                {/* First Copy */}
                                 {[
-                                    { name: "React & Next.js", level: "95%" },
-                                    { name: "Node.js & Express", level: "90%" },
-                                    { name: "Docker & Kubernetes", level: "95%" },
-                                    { name: "AWS / Cloud Arch", level: "80%" },
-                                    { name: "Python & Django", level: "95%" },
-                                    { name: "CI/CD", level: "90%" },
-                                ].map(skill => (
-                                    <motion.div
-                                        key={skill.name}
-                                        className="flex flex-col gap-2 group cursor-default"
-                                        initial="rest"
-                                        whileHover="hover"
-                                        animate="rest"
-                                    >
-                                        <div className="flex justify-between items-end">
-                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-foreground dark:group-hover:text-white transition-colors duration-300">{skill.name}</span>
-                                            <span className="text-xs font-mono text-primary group-hover:text-primary-foreground transition-colors duration-300">{skill.level}</span>
-                                        </div>
-                                        <div className="h-2 w-full bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden border border-gray-200 dark:border-white/5">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                whileInView={{ width: skill.level }}
-                                                variants={{
-                                                    rest: { filter: "brightness(1)", boxShadow: "0 0 10px rgba(43,124,238,0.5)" },
-                                                    hover: { filter: "brightness(1.3)", boxShadow: "0 0 25px rgba(43,124,238,0.8)" }
-                                                }}
-                                                transition={{ duration: 0.3 }}
-                                                className="h-full bg-primary rounded-full relative"
-                                            >
-                                                <div className="absolute inset-0 bg-white/20 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
+                                    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+                                    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+                                    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+                                    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+                                    { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+                                    { name: "Redux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+                                    { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" },
+                                    { name: "Three.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
+                                    { name: "Framer Motion", logo: "https://cdn.simpleicons.org/framer/0055FF" },
+                                    { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
+                                ].map((skill, i) => (
+                                    <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)]/50 dark:bg-white/5 border border-border-subtle text-sm font-medium text-foreground whitespace-nowrap backdrop-blur-md shadow-sm transition-transform hover:scale-105 hover:bg-white/10">
+                                        <img src={skill.logo} alt={skill.name} className="size-3.5" />
+                                        {skill.name}
+                                    </div>
+                                ))}
+                                {/* Duplicate Copy */}
+                                {[
+                                    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+                                    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+                                    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+                                    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+                                    { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+                                    { name: "Redux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+                                    { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" },
+                                    { name: "Three.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
+                                    { name: "Framer Motion", logo: "https://cdn.simpleicons.org/framer/0055FF" },
+                                    { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
+                                ].map((skill, i) => (
+                                    <div key={`dup-${i}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)]/50 dark:bg-white/5 border border-border-subtle text-sm font-medium text-foreground whitespace-nowrap backdrop-blur-md shadow-sm transition-transform hover:scale-105 hover:bg-white/10">
+                                        <img src={skill.logo} alt={skill.name} className="size-3.5" />
+                                        {skill.name}
+                                    </div>
                                 ))}
                             </div>
 
-                            {/* Hidden Skills - Expands on Hover */}
-                            <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{
-                                    height: isSkillsHovered ? "auto" : 0,
-                                    opacity: isSkillsHovered ? 1 : 0
-                                }}
-                                transition={{ duration: 0.5, ease: "circOut" }}
-                                className="overflow-hidden"
-                            >
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6 pt-6">
-                                    {[
-                                        { name: "TypeScript", level: "95%" },
-                                        { name: "PostgreSQL", level: "85%" },
-                                        { name: "Java/Spring", level: "80%" },
-                                        { name: "MongoDB", level: "90%" },
-                                        { name: "Terraform", level: "90%" },
-                                        { name: "WebSockets", level: "85%" },
-                                    ].map(skill => (
-                                        <motion.div
-                                            key={skill.name}
-                                            className="flex flex-col gap-2 group cursor-default"
-                                            initial="rest"
-                                            whileHover="hover"
-                                            animate="rest"
-                                            variants={{
-                                                rest: { x: 0 },
-                                                hover: { x: 5 }
-                                            }}
-                                        >
-                                            <div className="flex justify-between items-end">
-                                                <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">{skill.name}</span>
-                                                <span className="text-xs font-mono text-primary group-hover:text-primary-foreground transition-colors duration-300">{skill.level}</span>
-                                            </div>
-                                            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                                                <motion.div
-                                                    initial={{ width: 0 }}
-                                                    whileInView={{ width: skill.level }} // This might re-trigger on expand
-                                                    viewport={{ once: false }}
-                                                    variants={{
-                                                        rest: { filter: "brightness(1)", boxShadow: "0 0 10px rgba(43,124,238,0.5)" },
-                                                        hover: { filter: "brightness(1.3)", boxShadow: "0 0 25px rgba(43,124,238,0.8)" }
-                                                    }}
-                                                    transition={{ duration: 0.3 }}
-                                                    className="h-full bg-primary rounded-full relative"
-                                                >
-                                                    <div className="absolute inset-0 bg-white/20 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                                </motion.div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </motion.div>
+                            {/* Scrolling Wrapper - Row 2 (Backend & Infra) */}
+                            <div className="flex w-max animate-marquee-reverse gap-4 group-hover:[animation-play-state:paused]">
+                                {/* First Copy */}
+                                {[
+                                    { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+                                    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+                                    { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+                                    { name: "Spring Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+                                    { name: "Django", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
+                                    { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+                                    { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+                                    { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+                                    { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                                    { name: "Kubernetes", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+                                    { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
+                                    { name: "Terraform", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" },
+                                    { name: "Jenkins", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+                                    { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" }
+                                ].map((skill, i) => (
+                                    <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)]/50 dark:bg-white/5 border border-border-subtle text-sm font-medium text-foreground whitespace-nowrap backdrop-blur-md shadow-sm transition-transform hover:scale-105 hover:bg-white/10">
+                                        <img src={skill.logo} alt={skill.name} className="size-3.5" />
+                                        {skill.name}
+                                    </div>
+                                ))}
+                                {/* Duplicate Copy */}
+                                {[
+                                    { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+                                    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+                                    { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+                                    { name: "Spring Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+                                    { name: "Django", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
+                                    { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+                                    { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+                                    { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+                                    { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                                    { name: "Kubernetes", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+                                    { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
+                                    { name: "Terraform", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" },
+                                    { name: "Jenkins", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+                                    { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" }
+                                ].map((skill, i) => (
+                                    <div key={`dup-${i}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)]/50 dark:bg-white/5 border border-border-subtle text-sm font-medium text-foreground whitespace-nowrap backdrop-blur-md shadow-sm transition-transform hover:scale-105 hover:bg-white/10">
+                                        <img src={skill.logo} alt={skill.name} className="size-3.5" />
+                                        {skill.name}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </Card>
                 </motion.div>

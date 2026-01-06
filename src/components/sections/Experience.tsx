@@ -150,7 +150,9 @@ export default function Experience() {
                     <Link href="/projects">
                         <Button variant="primary" size="lg">View Projects</Button>
                     </Link>
-                    <Button variant="glass" size="lg"><Download className="size-4 mr-2" /> Download CV</Button>
+                    <a href="/Developer%20Mishra.pdf" target="_blank" rel="noopener noreferrer">
+                        <Button variant="glass" size="lg"><Download className="size-4 mr-2" /> Download CV</Button>
+                    </a>
                 </div>
             </div>
         </section>
