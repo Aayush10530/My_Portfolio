@@ -72,7 +72,7 @@ export default function Hero() {
                             </div>
 
                             <div className="flex flex-wrap gap-4 mt-2">
-                                <a href="/experience">
+                                <a href="/Developer%20Mishra.pdf" target="_blank" rel="noopener noreferrer">
                                     <Button variant="secondary" size="lg" className="shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                                         View Resume <ArrowUpRight className="size-4 ml-1" />
                                     </Button>
