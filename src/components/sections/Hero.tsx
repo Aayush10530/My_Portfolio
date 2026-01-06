@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, Variants, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, FolderOpen, MapPin, Wifi, Database, Code, Briefcase, Mail, PieChart } from "lucide-react";
+import { ArrowUpRight, FolderOpen, MapPin, Wifi, Database, Code, Briefcase, Mail, PieChart, Brain, Sparkles, Lightbulb, MessageCircle, Heart } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
@@ -164,46 +164,75 @@ export default function Hero() {
                         <div className="flex-1 p-8 flex flex-col justify-center">
                             <div className="mb-4">
                                 <div className="inline-block px-3 py-1 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold mb-3 backdrop-blur-sm">
-                                    OpenSource Contributor
+                                    AI Solution
                                 </div>
-                                <h2 className="text-3xl font-bold mb-2 text-foreground">Aayush Mishra</h2>
+                                <h2 className="text-3xl font-bold mb-2 text-foreground">Magic Minds</h2>
                                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-                                    An AI-powered accessibility assistant that bridges the gap for non-digital natives. Features real-time voice navigation and simplified UI generation.
+                                    MagicMinds, A voice-based conversational AI that acts as a human-like learning companion for children.
+                                    It enables natural, spoken interaction and contextual roleplay, helping kids practice real-world conversations and develop practical communication skills through engaging, personalized learning rather than rote memorization.
                                 </p>
                             </div>
-                            <div className="flex gap-2 flex-wrap">
-                                {["React", "Node.js", "OpenAI API", "Tailwind"].map(tech => (
-                                    <span key={tech} className="px-3 py-1 bg-primary/10 dark:bg-white/5 border border-white/5 rounded-md text-xs text-gray-700 dark:text-gray-300 font-mono backdrop-blur-sm">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
+
                         </div>
 
-                        {/* Code visual */}
-                        <div className="flex-1 bg-gray-50 dark:bg-black/40 backdrop-blur-md border-l border-border-subtle flex flex-col min-h-[250px] font-mono text-sm relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 origin-right">
-                            <div className="flex items-center px-4 py-3 border-b border-border-subtle bg-gray-200/50 dark:bg-black/20">
-                                <div className="flex gap-2">
-                                    <div className="size-3 rounded-full bg-[#ff5f56]" />
-                                    <div className="size-3 rounded-full bg-[#ffbd2e]" />
-                                    <div className="size-3 rounded-full bg-[#27c93f]" />
-                                </div>
-                                <div className="ml-4 text-xs text-gray-500">aayush-mishra — index.ts</div>
+                        {/* AI Learning Companion Visual */}
+                        <div className="flex-1 bg-gray-50 dark:bg-black/40 backdrop-blur-md border-l border-border-subtle flex flex-col items-center justify-center min-h-[250px] relative overflow-hidden group-hover:bg-primary/5 transition-colors duration-500">
+                            {/* Background Glow */}
+                            <div className="absolute inset-0 bg-gradient-radial from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                            {/* Central AI Orb */}
+                            <div className="relative z-10 flex items-center justify-center">
+                                {/* Core */}
+                                <motion.div
+                                    animate={{ scale: [1, 1.1, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                    className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-purple-500 shadow-[0_0_30px_rgba(43,124,238,0.5)] z-20 flex items-center justify-center"
+                                >
+                                    <Brain className="text-white size-8" />
+                                </motion.div>
+
+                                {/* Ripples */}
+                                {[...Array(3)].map((_, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="absolute border border-primary/30 rounded-full"
+                                        initial={{ width: 64, height: 64, opacity: 0.8 }}
+                                        animate={{
+                                            width: [64, 200],
+                                            height: [64, 200],
+                                            opacity: [0.5, 0]
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            repeat: Infinity,
+                                            delay: i * 0.6,
+                                            ease: "easeOut"
+                                        }}
+                                    />
+                                ))}
+
+                                {/* Floating Icons (Orbiting) */}
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                    className="absolute w-40 h-40"
+                                >
+                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 p-2 rounded-full backdrop-blur-md border border-white/10">
+                                        <Lightbulb className="text-yellow-400 size-4" />
+                                    </div>
+                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-white/10 p-2 rounded-full backdrop-blur-md border border-white/10">
+                                        <Sparkles className="text-purple-400 size-4" />
+                                    </div>
+                                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 p-2 rounded-full backdrop-blur-md border border-white/10">
+                                        <MessageCircle className="text-green-400 size-4" />
+                                    </div>
+                                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 bg-white/10 p-2 rounded-full backdrop-blur-md border border-white/10">
+                                        <Heart className="text-red-400 size-4" />
+                                    </div>
+                                </motion.div>
                             </div>
-                            <div className="p-6 text-gray-700 dark:text-gray-300 overflow-hidden relative">
-                                <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-[60px] pointer-events-none"></div>
-                                <div className="leading-relaxed relative z-10 text-xs md:text-sm">
-                                    <p><span className="text-purple-400">import</span> {"{ "} <span className="text-yellow-300">OpenAI</span> {" }"} <span className="text-purple-400">from</span> <span className="text-green-300">&apos;openai&apos;</span>;</p>
-                                    <br />
-                                    <p><span className="text-blue-400">const</span> <span className="text-yellow-200">response</span> = <span className="text-blue-400">async</span> (input) ={">"} {"{"}</p>
-                                    <p className="pl-4"><span className="text-blue-400">const</span> completion = <span className="text-blue-400">await</span> openai.chat({"{"}</p>
-                                    <p className="pl-8">model: <span className="text-green-300">&apos;gpt-4-turbo&apos;</span>,</p>
-                                    <p className="pl-4">{"});"}</p>
-                                    <p className="pl-4"><span className="text-purple-400">return</span> completion;</p>
-                                    <p>{"};"}</p>
-                                    <p className="mt-2 text-gray-500 animate-pulse">_</p>
-                                </div>
-                            </div>
+
+                            <p className="absolute bottom-6 text-xs font-medium text-primary tracking-widest uppercase opacity-60">Learning Companion</p>
                         </div>
                     </Card>
                 </motion.div>
