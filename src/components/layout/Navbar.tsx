@@ -36,7 +36,7 @@ export default function Navbar() {
         <>
             <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
                 <div className={cn(
-                    "rounded-full px-6 h-16 w-full max-w-7xl flex items-center justify-between transition-all duration-500",
+                    "rounded-full px-4 md:px-8 h-16 w-full max-w-7xl flex items-center justify-between transition-all duration-500",
                     scrolled
                         ? "bg-black/30 backdrop-blur-2xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] supports-[backdrop-filter]:bg-black/20"
                         : "bg-transparent border-transparent"
@@ -96,17 +96,14 @@ export default function Navbar() {
                             ))}
                         </div>
 
-                        <button
+                        <Button
                             onClick={() => {
                                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                             }}
+                            className="rounded-full bg-[#1e60f5] hover:bg-[#1a55d6] text-white px-6 font-medium shadow-lg hover:shadow-blue-500/20 border-none h-10 transition-transform duration-300 hover:scale-105"
                         >
-                            <Button
-                                className="rounded-full bg-[#1e60f5] hover:bg-[#1a55d6] text-white px-6 font-medium shadow-lg hover:shadow-blue-500/20 border-none h-10 transition-transform duration-300 hover:scale-105"
-                            >
-                                Contact Me
-                            </Button>
-                        </button>
+                            Contact Me
+                        </Button>
                     </div>
 
                     {/* Mobile Menu Button */}
