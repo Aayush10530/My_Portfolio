@@ -362,7 +362,7 @@ export default function Projects() {
                         Selected Work
                     </h2>
                     <p className="text-xl text-gray-400 font-light max-w-xl leading-relaxed">
-                        A collection of engineering challenges solved. Building robust systems from code to cloud.
+                        A collection of engineering challenges solved. <br /> Building robust systems from Ideas to Reality.
                     </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
